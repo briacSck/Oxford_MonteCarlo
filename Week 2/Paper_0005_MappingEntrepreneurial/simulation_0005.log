@@ -1,0 +1,32 @@
+2026-03-28 19:46:31,528  INFO  ============================================================
+2026-03-28 19:46:31,528  INFO  Paper 0005 — Mode: BASELINE
+2026-03-28 19:46:31,559  INFO  ============================================================
+2026-03-28 19:46:31,560  INFO  Loading source .dta from C:\Users\briac\Econ_Code\Oxford_MonteCarlo\Week 2\paper_mappingentrepreneurialinclusion\mapping_entrepreneurial_inclusion.dta
+2026-03-28 19:46:33,075  INFO  Loaded with pyreadstat
+2026-03-28 19:46:55,630  INFO  ============================================================
+2026-03-28 19:46:55,660  INFO  Paper 0005 — Mode: BASELINE
+2026-03-28 19:46:55,661  INFO  ============================================================
+2026-03-28 19:46:55,662  INFO  Loading source .dta from C:\Users\briac\Econ_Code\Oxford_MonteCarlo\Week 2\paper_mappingentrepreneurialinclusion\mapping_entrepreneurial_inclusion.dta
+2026-03-28 19:46:56,298  INFO  Loaded with pyreadstat
+2026-03-28 19:46:57,222  INFO  DATA.csv written to C:\Users\briac\Econ_Code\Oxford_MonteCarlo\Week 2\Paper_0005_MappingEntrepreneurial\DATA.csv (32,647 rows × 22 cols)
+2026-03-28 19:46:57,254  INFO  Running baseline regression (Model 3_1)...
+2026-03-28 19:46:57,274  INFO  Regression sample: N = 32,647
+2026-03-28 19:46:59,059  WARNING  AbsorbingLS failed ('DataFrame' object has no attribute 'dtype') — falling back to dummy expansion
+2026-03-28 19:47:32,671  INFO  ============================================================
+2026-03-28 19:47:32,673  INFO  Paper 0005 — Mode: BASELINE
+2026-03-28 19:47:32,673  INFO  ============================================================
+2026-03-28 19:47:32,673  INFO  DATA.csv already exists — loading from C:\Users\briac\Econ_Code\Oxford_MonteCarlo\Week 2\Paper_0005_MappingEntrepreneurial\DATA.csv
+2026-03-28 19:47:33,189  INFO  Running baseline regression (Model 3_1)...
+2026-03-28 19:47:33,230  INFO  Regression sample: N = 32,647
+2026-03-28 19:47:35,713  WARNING  AbsorbingLS failed (All arrays must be of the same length) — falling back to dummy expansion
+2026-03-28 20:58:30,595  INFO  ============================================================
+2026-03-28 20:58:30,596  INFO  Paper 0005 — Mode: BASELINE
+2026-03-28 20:58:30,596  INFO  ============================================================
+2026-03-28 20:58:30,596  INFO  Loading source .dta from C:\Users\briac\Econ_Code\Oxford_MonteCarlo\Week 2\paper_mappingentrepreneurialinclusion\mapping_entrepreneurial_inclusion.dta
+2026-03-28 20:58:31,485  INFO  Loaded with pyreadstat
+2026-03-28 20:58:32,675  INFO  DATA.csv written to C:\Users\briac\Econ_Code\Oxford_MonteCarlo\Week 2\Paper_0005_MappingEntrepreneurial\DATA.csv (32,647 rows × 22 cols)
+2026-03-28 20:58:32,711  INFO  Running baseline regression (Model 3_1) with pyfixest...
+2026-03-28 20:58:32,718  INFO  Regression sample: N = 32,647
+2026-03-28 20:59:19,931  INFO  pyfixest regression complete
+2026-03-28 20:59:19,956  INFO  Baseline mode complete. Review output above and update confignotes.txt.
+2026-03-28 20:59:19,956  INFO  DO NOT proceed to simulation until baseline is confirmed matched.

@@ -1,0 +1,11 @@
+2026-03-28 21:06:00,202  INFO  ============================================================
+2026-03-28 21:06:00,203  INFO  Paper 0017 -- Mode: BASELINE
+2026-03-28 21:06:00,203  INFO  ============================================================
+2026-03-28 21:06:00,203  INFO  Loading source CSV from C:\Users\briac\Econ_Code\Oxford_MonteCarlo\Week 2\paper_statusandconsensus\movie_data.csv
+2026-03-28 21:06:00,263  INFO  Loaded: 4,012 rows x 49 cols
+2026-03-28 21:06:00,439  INFO  DATA.csv written to C:\Users\briac\Econ_Code\Oxford_MonteCarlo\Week 2\Paper_0017_StatusConsensus\DATA.csv (4,012 rows x 50 cols)
+2026-03-28 21:06:03,112  INFO  Running baseline regression (m.pooled.sd) with statsmodels OLS...
+2026-03-28 21:06:03,117  INFO  Regression sample: N = 4,012
+2026-03-28 21:06:03,300  INFO  statsmodels OLS complete
+2026-03-28 21:06:03,315  INFO  Baseline mode complete. Review output above and update confignotes.txt.
+2026-03-28 21:06:03,315  INFO  DO NOT proceed to simulation until baseline is confirmed matched.
