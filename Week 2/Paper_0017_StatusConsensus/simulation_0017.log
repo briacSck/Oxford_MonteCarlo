@@ -9,3 +9,25 @@
 2026-03-28 21:06:03,300  INFO  statsmodels OLS complete
 2026-03-28 21:06:03,315  INFO  Baseline mode complete. Review output above and update confignotes.txt.
 2026-03-28 21:06:03,315  INFO  DO NOT proceed to simulation until baseline is confirmed matched.
+2026-03-29 09:52:16,522  INFO  ============================================================
+2026-03-29 09:52:16,523  INFO  Paper 0017 -- Mode: SMOKE
+2026-03-29 09:52:16,523  INFO  ============================================================
+2026-03-29 09:52:16,524  INFO  DATA.csv already exists -- loading from C:\Users\briac\Econ_Code\Oxford_MonteCarlo\Week 2\Paper_0017_StatusConsensus\DATA.csv
+2026-03-29 09:52:19,707  INFO  Running baseline regression (m.pooled.sd) with statsmodels OLS...
+2026-03-29 09:52:19,718  INFO  Regression sample: N = 4,012
+2026-03-29 09:52:19,925  INFO  statsmodels OLS complete
+2026-03-29 09:52:19,944  INFO  SMOKE TEST: 3 mechs x 2 levels x 1 var x 2 iters x 7 methods = 84 runs
+2026-03-29 09:52:19,945  INFO  Resuming: 0 combinations already complete
+2026-03-29 09:52:19,947  INFO  Baseline focal coef: {'coef': 0.04679622884636058, 'se': 0.008036098188896045, 'pval': 6.231068049947944e-09, 'nobs': 4012, 'sign': 1, 'sig': True}
+2026-03-29 09:52:19,949  INFO    MCAR | 1pct | kim_violence_gore
+2026-03-29 09:52:28,101  INFO    MCAR | 10pct | kim_violence_gore
+2026-03-29 09:52:34,112  INFO    MAR | 1pct | kim_violence_gore
+2026-03-29 09:52:40,725  INFO    MAR | 10pct | kim_violence_gore
+2026-03-29 09:52:44,035  INFO      Progress: 50 done, 0 errors
+2026-03-29 09:52:47,214  INFO    NMAR | 1pct | kim_violence_gore
+2026-03-29 09:52:53,548  INFO    NMAR | 10pct | kim_violence_gore
+2026-03-29 09:53:09,998  INFO  Simulation complete: 84 done, 0 errors
+2026-03-29 09:53:09,998  INFO  Computing NMAR diagnostics...
+2026-03-29 09:53:16,356  INFO  Writing Excel workbook to C:\Users\briac\Econ_Code\Oxford_MonteCarlo\Week 2\Paper_0017_StatusConsensus\SMOKE_Stroube2024Report_0017.xlsx ...
+2026-03-29 09:53:17,032  INFO  Workbook written: C:\Users\briac\Econ_Code\Oxford_MonteCarlo\Week 2\Paper_0017_StatusConsensus\SMOKE_Stroube2024Report_0017.xlsx
+2026-03-29 09:53:17,034  INFO  Smoke test complete.

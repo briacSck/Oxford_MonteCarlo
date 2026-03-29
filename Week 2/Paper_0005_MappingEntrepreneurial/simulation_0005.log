@@ -30,3 +30,45 @@
 2026-03-28 20:59:19,931  INFO  pyfixest regression complete
 2026-03-28 20:59:19,956  INFO  Baseline mode complete. Review output above and update confignotes.txt.
 2026-03-28 20:59:19,956  INFO  DO NOT proceed to simulation until baseline is confirmed matched.
+2026-03-29 09:52:14,532  INFO  ============================================================
+2026-03-29 09:52:14,533  INFO  Paper 0005 -- Mode: SMOKE
+2026-03-29 09:52:14,534  INFO  ============================================================
+2026-03-29 09:52:14,534  INFO  Loading from C:\Users\briac\Econ_Code\Oxford_MonteCarlo\Week 2\Paper_0005_MappingEntrepreneurial\DATA.csv
+2026-03-29 09:52:14,800  INFO  Running baseline regression (pyfixest)...
+2026-03-29 09:52:14,811  INFO  Regression sample N = 32,647
+2026-03-29 09:53:19,134  INFO  SMOKE TEST: 3 mechs x 2 levels x 1 var x 2 iters x 7 methods = 84 runs
+2026-03-29 09:53:19,135  INFO  Resuming: 0 combinations already complete
+2026-03-29 09:53:19,144  INFO  Baseline focal coef: None
+2026-03-29 09:53:19,162  INFO    MCAR | 1pct | log_pop_black_aa
+2026-03-29 10:03:08,395  INFO    MCAR | 10pct | log_pop_black_aa
+2026-03-29 10:03:23,865  INFO    MAR | 1pct | log_pop_black_aa
+2026-03-29 10:03:36,833  INFO    MAR | 10pct | log_pop_black_aa
+2026-03-29 10:03:43,301  INFO      Progress: 50 done, 0 errors
+2026-03-29 10:03:49,328  INFO    NMAR | 1pct | log_pop_black_aa
+2026-03-29 10:06:04,516  INFO    NMAR | 10pct | log_pop_black_aa
+2026-03-29 10:06:18,512  INFO  Simulation complete: 84 done, 0 errors
+2026-03-29 10:06:18,512  INFO  Computing NMAR diagnostics...
+2026-03-29 10:06:20,183  INFO  Writing Excel workbook to C:\Users\briac\Econ_Code\Oxford_MonteCarlo\Week 2\Paper_0005_MappingEntrepreneurial\SMOKE_Stroube2025Report_0005.xlsx ...
+2026-03-29 10:06:20,424  INFO  Workbook written: C:\Users\briac\Econ_Code\Oxford_MonteCarlo\Week 2\Paper_0005_MappingEntrepreneurial\SMOKE_Stroube2025Report_0005.xlsx
+2026-03-29 10:06:20,425  INFO  Smoke test complete.
+2026-03-29 10:10:02,686  INFO  ============================================================
+2026-03-29 10:10:02,687  INFO  Paper 0005 -- Mode: SMOKE
+2026-03-29 10:10:02,687  INFO  ============================================================
+2026-03-29 10:10:02,688  INFO  Loading from C:\Users\briac\Econ_Code\Oxford_MonteCarlo\Week 2\Paper_0005_MappingEntrepreneurial\DATA.csv
+2026-03-29 10:10:02,999  INFO  Running baseline regression (pyfixest)...
+2026-03-29 10:10:03,033  INFO  Regression sample N = 32,647
+2026-03-29 10:10:47,351  INFO  SMOKE TEST: 3 mechs x 2 levels x 1 var x 2 iters x 7 methods = 84 runs
+2026-03-29 10:10:47,352  INFO  Resuming: 0 combinations already complete
+2026-03-29 10:10:47,356  INFO  Baseline focal coef: {'coef': 0.030672817727257343, 'se': 0.005403333735702171, 'pval': 2.7991444717656577e-08, 'nobs': 32647, 'sign': 1, 'sig': True}
+2026-03-29 10:10:47,365  INFO    MCAR | 1pct | log_pop_black_aa
+2026-03-29 10:11:05,753  INFO    MCAR | 10pct | log_pop_black_aa
+2026-03-29 10:11:24,464  INFO    MAR | 1pct | log_pop_black_aa
+2026-03-29 10:11:44,865  INFO    MAR | 10pct | log_pop_black_aa
+2026-03-29 10:12:03,776  INFO      Progress: 50 done, 0 errors
+2026-03-29 10:12:22,669  INFO    NMAR | 1pct | log_pop_black_aa
+2026-03-29 10:12:58,460  INFO    NMAR | 10pct | log_pop_black_aa
+2026-03-29 10:13:43,579  INFO  Simulation complete: 84 done, 0 errors
+2026-03-29 10:13:43,580  INFO  Computing NMAR diagnostics...
+2026-03-29 10:13:47,631  INFO  Writing Excel workbook to C:\Users\briac\Econ_Code\Oxford_MonteCarlo\Week 2\Paper_0005_MappingEntrepreneurial\SMOKE_Stroube2025Report_0005.xlsx ...
+2026-03-29 10:13:48,300  INFO  Workbook written: C:\Users\briac\Econ_Code\Oxford_MonteCarlo\Week 2\Paper_0005_MappingEntrepreneurial\SMOKE_Stroube2025Report_0005.xlsx
+2026-03-29 10:13:48,302  INFO  Smoke test complete.
