@@ -1,0 +1,8 @@
+MI Pooled Result -- Paper 0005
+Focal IV: log_pop_black_aa
+Pooled Coef: 0.024597
+Pooled SE:   0.003660
+Pooled pval: 0.002554
+N (mean):    32647
+FMI:         0.0041
+RE:          0.9992

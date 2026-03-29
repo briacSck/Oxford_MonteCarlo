@@ -1,0 +1,95 @@
+================================================================================
+PAPER INFORMATION RECORD
+================================================================================
+Paper ID:          0017
+Title:             Status and Consensus: Heterogeneity in Audience Evaluations
+                   of Female- versus Male-Lead Films
+Authors:           Bryan Stroube
+Year & Journal:    2024, Strategic Management Journal, 45:994-1024
+================================================================================
+DATA STRUCTURE
+================================================================================
+Data type:         Cross-section (film-level)
+Unit-ID variable:  N/A (no explicit panel ID)
+Time variable:     N/A
+Dimensions:        4,012 rows x 50 columns (DATA.csv)
+Source file:       movie_data.csv
+================================================================================
+CORE REGRESSION MODEL
+================================================================================
+Dependent variable:        sd_pooled (pooled rating standard deviation)
+Core IV (focal):           FLead (binary, 1 = female lead actor)
+Controls:                  mean_pooled, kim_violence_gore, kim_sex_nudity,
+                           kim_language, major, log_bom_opening_theaters,
+                           genres_count
+Regression type:           OLS (statsmodels.OLS, standard SEs -- no clustering)
+Fixed effects:             bom_year (27 levels, treatment coding, drop_first=True)
+                           bom_open_month (12 levels, treatment coding, drop_first=True)
+                           22 genre dummies (pre-built binary columns, all included)
+Clustered SEs:             None (confirmed from R source movies.R -- lm() with no
+                           vce/cluster option)
+Weights:                   None
+Sample restrictions:       All movies with ratings -- no subsetting (Table 2)
+FE-absorbed variables:     N/A (year/month dummies expanded explicitly, not absorbed)
+Derived variable:          log_bom_opening_theaters = log(bom_opening_theaters)
+                           (no zeros in bom_opening_theaters; min=1)
+Source model:              Table 2, Model 2 (m.pooled.sd) in movies.R
+================================================================================
+SIMULATION CONFIGURATION
+================================================================================
+Key variables (4, locked 2026-03-28):
+  1. kim_violence_gore
+  2. kim_sex_nudity
+  3. kim_language
+  4. log_bom_opening_theaters
+MAR control variable:      genres_count
+Predictor pool:            FLead, mean_pooled, kim_violence_gore, kim_sex_nudity,
+                           kim_language, major, log_bom_opening_theaters, genres_count
+Mechanisms:                MCAR, MAR, NMAR
+Missingness proportions:   1%, 5%, 10%, 20%, 30%, 40%, 50%
+Methods:                   LD, Mean, Reg, Iter, RF, DL, MILGBM
+Iterations per scenario:   30
+MAR/NMAR strength:         1.5
+M (multiple imputation):   5
+================================================================================
+BASELINE VALIDATION
+================================================================================
+Core coefficient:          0.0468 (FLead)
+Core SE:                   0.0080
+Core p-value:              <0.001 (p = 6.23e-09)
+Published value:           0.047** (Table 2, Model 2; ** = p < 0.01)
+Discrepancy:               0.0002 -- 0.0468 rounds to published 0.047 exactly
+Additional checks:
+  mean_pooled              -0.2335   kim_violence_gore  +0.0122
+  kim_sex_nudity           +0.0115   kim_language       -0.0149
+  major                    -0.0396   log_bom_opening    +0.0056
+  genres_count             -0.0095   (not significant, consistent with paper)
+  N                         4,012    R2 = 0.5620    R2_adj = 0.5549
+================================================================================
+RUN LOG
+================================================================================
+Smoke start:       2026-03-29 09:52:16
+Smoke end:         2026-03-29 09:53:17  (84 runs, 0 errors)
+Full run start:    2026-03-29 ~09:53
+Full run end:      [TO BE FILLED ON COMPLETION]
+Errors:            None
+Notes:             Column rename map applied at load time: dots to underscores
+                   (genres.count -> genres_count, genre.Sci.Fi -> genre_Sci_Fi, etc.).
+                   FLead and major cast from bool to int before regression.
+                   TensorFlow install failed (Windows long-path limit); DL
+                   method silently falls back to mean imputation via try/except.
+================================================================================
+QC CHECKLIST
+================================================================================
+[ ] 1.  Baseline matches published table
+[ ] 2.  All 3 mechanisms ran (MCAR, MAR, NMAR)
+[ ] 3.  All 7 proportions ran (1%, 5%, 10%, 20%, 30%, 40%, 50%)
+[ ] 4.  All 7 methods produced output (LD, Mean, Reg, Iter, RF, DL, MILGBM)
+[ ] 5.  30 iterations completed per combination
+[ ] 6.  All 4 locked key variables completed full grid
+[ ] 7.  No blank or all-zero sheets in final workbook
+[ ] 8.  B-proportion ~100% at 1% missingness
+[ ] 9.  LD at 50% shows substantially reduced N
+[ ] 10. Paper Information Record complete
+[ ] 11. Files archived per directory convention
+================================================================================
