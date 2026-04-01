@@ -10,10 +10,9 @@ statsmodels>=0.14      # Paper 0017 estimator: OLS with explicit design matrix
 lightgbm>=4.1          # MILGBM imputation method (Method 7)
 openpyxl>=3.1          # Excel output (pd.ExcelWriter engine="openpyxl")
 pyreadstat>=1.2        # Reading .dta source data (Paper 0005 only)
+tensorflow>=2.13       # Required for Method 6 (Deep Learning imputation via MLP)
 
-# Optional — required for Method 6 (Deep Learning imputation via MLP).
-# If unavailable at import time, the DL method silently falls back to mean imputation.
+# If tensorflow is unavailable at import time, the DL method falls back to mean imputation.
 # Installation may fail on Windows due to the Long Path limitation —
 # enable it via registry (HKLM\SYSTEM\CurrentControlSet\Control\FileSystem\LongPathsEnabled=1)
 # before installing.
-# tensorflow>=2.13

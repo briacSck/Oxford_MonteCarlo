@@ -1,8 +1,0 @@
-MI Pooled Result -- Paper 0017
-Focal IV: FLead
-Pooled Coef: 0.046468
-Pooled SE:   0.008035
-Pooled pval: 0.004441
-N (mean):    4012
-FMI:         0.0000
-RE:          1.0000

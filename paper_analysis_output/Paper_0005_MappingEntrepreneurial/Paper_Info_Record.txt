@@ -1,0 +1,103 @@
+================================================================================
+PAPER INFORMATION RECORD
+================================================================================
+Paper ID:          0005
+Title:             Mapping Entrepreneurial Inclusion Across US Neighborhoods:
+                   The Case of Low-Code E-commerce Entrepreneurship
+Authors:           Bryan Stroube, Gary Dushnitsky
+Year & Journal:    ~2025, Strategic Management Journal
+================================================================================
+DATA STRUCTURE
+================================================================================
+Data type:         Cross-section (ZCTA-level)
+Unit-ID variable:  N/A (no explicit panel ID)
+Time variable:     N/A
+Dimensions:        32,647 rows x 22 columns (DATA.csv)
+Source file:       mapping_entrepreneurial_inclusion.dta
+================================================================================
+CORE REGRESSION MODEL
+================================================================================
+Dependent variable:        log_shopify_count_1
+Core IV (focal):           log_pop_black_aa
+Controls:                  log_pop_total, log_total_bachelor_deg,
+                           log_pop_total_poverty, log_total_social_cap
+Regression type:           OLS with two-way FE absorption (pyfixest.feols)
+Fixed effects:             state_name_fe + MSA_fe (two-way, absorbed)
+Clustered SEs:             CRV1 on MSA_fe
+Weights:                   None
+Sample restrictions:       All ZCTAs -- no subsetting (Model 3_1)
+FE-absorbed variables:     state_name_fe, MSA_fe
+Source model:              Table 3, Column 1 (table3_1) in mapping_entrepreneurial_inclusion.do
+================================================================================
+SIMULATION CONFIGURATION
+================================================================================
+Key variables (4, locked 2026-03-28):
+  1. log_pop_black_aa
+  2. log_total_bachelor_deg
+  3. log_pop_total_poverty
+  4. log_total_social_cap
+MAR control variable:      log_pop_total
+Predictor pool:            log_pop_black_aa, log_pop_total, log_total_bachelor_deg,
+                           log_pop_total_poverty, log_total_social_cap
+Mechanisms:                MCAR, MAR, NMAR
+Missingness proportions:   1%, 5%, 10%, 20%, 30%, 40%, 50%
+Methods:                   LD, Mean, Reg, Iter, RF, DL, MILGBM
+Iterations per scenario:   30
+MAR/NMAR strength:         1.5
+M (multiple imputation):   5
+================================================================================
+BASELINE VALIDATION
+================================================================================
+Core coefficient:          0.0307 (log_pop_black_aa)
+Core SE:                   0.0054
+Core p-value:              <0.001 (p = 2.80e-08)
+Published value:           0.0307 (Table 3, Model 3_1)
+Discrepancy:               0.0000 -- exact match to 4 decimal places
+Additional checks:
+  log_pop_total            -0.0905   published -0.0905   MATCH
+  log_total_bachelor_deg    0.1431   published  0.1431   MATCH
+  log_pop_total_poverty    -0.0120   published -0.0120   MATCH
+  log_total_social_cap      0.3684   published  0.3684   MATCH
+  N                        32,647   published 32,647    MATCH
+  R2                        0.688   published  0.6883   within rounding tolerance
+================================================================================
+RUN LOG
+================================================================================
+Smoke start:       2026-03-29 10:10:02
+Smoke end:         2026-03-29 10:13:48  (84 runs, 0 errors)
+Full run start:    2026-03-29 21:17 (clean re-run after smoke-log contamination fix)
+Full run end:      2026-04-01 07:38:40  (17,640 runs, 0 errors)
+Errors:            None
+Run history:
+  Run 1 (2026-03-29 ~10:14): QC FAILED -- N_iters=28 for 42 combos (smoke/full
+         progress-log contamination). Archived as
+         ARCHIVE_Stroube2025Report_0005_partial_20260329.xlsx
+  Run 2 (2026-03-29 21:17): FINAL. All issues resolved. QC PASSED.
+Notes:             pyfixest fit._N used (not fit.nobs -- attribute absent in
+                   installed pyfixest version); fixed 2026-03-29.
+                   Mode-namespaced progress logs applied (H1 patch) to prevent
+                   smoke/full contamination; clean run started after deleting old log.
+                   DL method uses TensorFlow 2.20.0 (MLP: 32->Dropout(0.1)->16->1
+                   units, ReLU activation, Adam lr=0.005, EarlyStopping on val_loss,
+                   +noise from residual SD). Run via Windows Store Python which has
+                   TF 2.20.0 natively. Confirmed genuine (TF log entries present,
+                   no fallback errors).
+                   MILGBM method uses LightGBM 4.6.0 MICE (M=5, Rubin's Rules pooling,
+                   30 estimators, max_depth=4, lr=0.05, 10 leaves).
+                   Both DL and MILGBM confirmed genuine in final run (0 errors).
+================================================================================
+QC CHECKLIST
+================================================================================
+[X] 1.  Baseline matches published table (log_pop_black_aa=0.0307, exact match)
+[X] 2.  All 3 mechanisms ran (MCAR, MAR, NMAR)
+[X] 3.  All 7 proportions ran (1%, 5%, 10%, 20%, 30%, 40%, 50%)
+[X] 4.  All 7 methods produced output (LD, Mean, Reg, Iter, RF, DL, MILGBM)
+        DL: genuine TF 2.20.0 MLP; MILGBM: genuine LightGBM 4.6.0 MICE
+[X] 5.  30 iterations completed per combination (all 588 combos verified, 2026-04-01)
+[X] 6.  All 4 locked key variables completed full grid
+[X] 7.  No blank or all-zero sheets in final workbook (all 17 sheets checked)
+[X] 8.  B-proportion ~100% at 1% missingness (min=100% across all methods/vars)
+[X] 9.  LD at 50% shows substantially reduced N (Mean_N_obs~16,320 vs baseline 32,647)
+[X] 10. Paper Information Record complete
+[X] 11. Files archived per directory convention
+================================================================================
