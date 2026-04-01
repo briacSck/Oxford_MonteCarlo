@@ -125,13 +125,32 @@ None.
 --------------------------------------------------------------------------------
 QC SIGNOFF
 --------------------------------------------------------------------------------
-[ ] 1. Baseline matches published table
-[ ] 2. All 3 mechanisms ran (MCAR, MAR, NMAR)
-[ ] 3. All 7 proportions ran (1%, 5%, 10%, 20%, 30%, 40%, 50%)
-[ ] 4. All 7 methods produced output
-[ ] 5. 30 iterations per combination
-[ ] 6. No blank/all-zero sheets in workbook
-[ ] 7. B-proportion ~100% at 1% missingness
-[ ] 8. LD at 50% shows reduced N
-[ ] 9. PaperInfoRecord complete
-[ ] 10. Files archived per directory convention
+[X] 1. Baseline matches published table (log_pop_black_aa=0.0307, exact match)
+[X] 2. All 3 mechanisms ran (MCAR, MAR, NMAR)
+[X] 3. All 7 proportions ran (1%, 5%, 10%, 20%, 30%, 40%, 50%)
+[X] 4. All 7 methods produced output (genuine DL + MILGBM confirmed, 0 errors)
+[X] 5. 30 iterations per combination (all 588 combos verified)
+[X] 6. No blank/all-zero sheets in workbook (all 17 sheets checked)
+[X] 7. B-proportion ~100% at 1% missingness (min=100%)
+[X] 8. LD at 50% shows reduced N (Mean_N_obs~16,320 vs 32,647 baseline)
+[X] 9. PaperInfoRecord complete
+[X] 10. Files archived per directory convention
+
+--------------------------------------------------------------------------------
+FULL RUN COMPLETION NOTE (2026-04-01)
+--------------------------------------------------------------------------------
+Final workbook: Stroube2025Report_0005.xlsx (written 2026-04-01 07:38:40)
+Run: 2026-03-29 21:17 -- 2026-04-01 07:38:40, 17,640 runs, 0 errors
+
+DL method: TensorFlow 2.20.0, MLP architecture 32->Dropout(0.1)->16->1 units,
+  ReLU activation, Adam optimizer lr=0.005, EarlyStopping on val_loss (patience=5),
+  residual noise added. Run via Windows Store Python (has TF 2.20.0 natively).
+  Confirmed genuine (TF log entries present at run start, no fallback errors).
+
+MILGBM method: LightGBM 4.6.0, MICE framework, M=5 imputed datasets, Rubin's
+  Rules pooling, 30 estimators, max_depth=4, learning_rate=0.05, num_leaves=10.
+  Confirmed genuine (0 lightgbm errors).
+
+Earlier run archived:
+  ARCHIVE_Stroube2025Report_0005_partial_20260329.xlsx  -- smoke-log contamination
+    (N_iters=28 for 42 combos; progress log not namespaced before H1 patch)

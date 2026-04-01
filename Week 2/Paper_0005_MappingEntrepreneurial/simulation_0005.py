@@ -773,6 +773,7 @@ def _update_stability(stability, key_var, mechanism, pct_str, method, coef_info,
     cell["total"] += 1
     if coef_info is None or baseline_coef is None:
         return
+    cell["sum_nobs"] = cell.get("sum_nobs", 0) + coef_info.get("nobs", 0)
     sign_same = coef_info["sign"] == baseline_coef["sign"]
     sig_same = coef_info["sig"] == baseline_coef["sig"]
     if sign_same and sig_same:
@@ -940,6 +941,7 @@ def write_excel_report(
                         "SS_prop": round(ss_prop * 100, 1) if pd.notna(ss_prop) else np.nan,
                         "B_CI_lo": round(lo * 100, 1) if pd.notna(lo) else np.nan,
                         "B_CI_hi": round(hi * 100, 1) if pd.notna(hi) else np.nan,
+                        "Mean_N_obs": round(cell.get("sum_nobs", 0) / n, 1) if n > 0 else np.nan,
                     })
     summary_df = pd.DataFrame(summary_rows) if summary_rows else pd.DataFrame({"Note": [f"No data {smoke_note}"]})
 
@@ -1347,6 +1349,9 @@ def main():
     parser.add_argument("--mode", choices=["baseline", "smoke", "full"], default="baseline")
     parser.add_argument("--reload", action="store_true")
     args = parser.parse_args()
+
+    # Namespace progress log by mode so smoke and full runs cannot contaminate each other
+    Config.PROGRESS_LOG = SCRIPT_DIR / f"simulation_0005_progress_{args.mode}.log"
 
     log.info("=" * 60)
     log.info(f"Paper 0005 -- Mode: {args.mode.upper()}")

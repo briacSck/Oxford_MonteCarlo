@@ -65,25 +65,39 @@ RUN LOG
 ================================================================================
 Smoke start:       2026-03-29 10:10:02
 Smoke end:         2026-03-29 10:13:48  (84 runs, 0 errors)
-Full run start:    2026-03-29 ~10:14
-Full run end:      [TO BE FILLED ON COMPLETION]
+Full run start:    2026-03-29 21:17 (clean re-run after smoke-log contamination fix)
+Full run end:      2026-04-01 07:38:40  (17,640 runs, 0 errors)
 Errors:            None
+Run history:
+  Run 1 (2026-03-29 ~10:14): QC FAILED -- N_iters=28 for 42 combos (smoke/full
+         progress-log contamination). Archived as
+         ARCHIVE_Stroube2025Report_0005_partial_20260329.xlsx
+  Run 2 (2026-03-29 21:17): FINAL. All issues resolved. QC PASSED.
 Notes:             pyfixest fit._N used (not fit.nobs -- attribute absent in
                    installed pyfixest version); fixed 2026-03-29.
-                   TensorFlow install failed (Windows long-path limit); DL
-                   method silently falls back to mean imputation via try/except.
+                   Mode-namespaced progress logs applied (H1 patch) to prevent
+                   smoke/full contamination; clean run started after deleting old log.
+                   DL method uses TensorFlow 2.20.0 (MLP: 32->Dropout(0.1)->16->1
+                   units, ReLU activation, Adam lr=0.005, EarlyStopping on val_loss,
+                   +noise from residual SD). Run via Windows Store Python which has
+                   TF 2.20.0 natively. Confirmed genuine (TF log entries present,
+                   no fallback errors).
+                   MILGBM method uses LightGBM 4.6.0 MICE (M=5, Rubin's Rules pooling,
+                   30 estimators, max_depth=4, lr=0.05, 10 leaves).
+                   Both DL and MILGBM confirmed genuine in final run (0 errors).
 ================================================================================
 QC CHECKLIST
 ================================================================================
-[ ] 1.  Baseline matches published table
-[ ] 2.  All 3 mechanisms ran (MCAR, MAR, NMAR)
-[ ] 3.  All 7 proportions ran (1%, 5%, 10%, 20%, 30%, 40%, 50%)
-[ ] 4.  All 7 methods produced output (LD, Mean, Reg, Iter, RF, DL, MILGBM)
-[ ] 5.  30 iterations completed per combination
-[ ] 6.  All 4 locked key variables completed full grid
-[ ] 7.  No blank or all-zero sheets in final workbook
-[ ] 8.  B-proportion ~100% at 1% missingness
-[ ] 9.  LD at 50% shows substantially reduced N
-[ ] 10. Paper Information Record complete
-[ ] 11. Files archived per directory convention
+[X] 1.  Baseline matches published table (log_pop_black_aa=0.0307, exact match)
+[X] 2.  All 3 mechanisms ran (MCAR, MAR, NMAR)
+[X] 3.  All 7 proportions ran (1%, 5%, 10%, 20%, 30%, 40%, 50%)
+[X] 4.  All 7 methods produced output (LD, Mean, Reg, Iter, RF, DL, MILGBM)
+        DL: genuine TF 2.20.0 MLP; MILGBM: genuine LightGBM 4.6.0 MICE
+[X] 5.  30 iterations completed per combination (all 588 combos verified, 2026-04-01)
+[X] 6.  All 4 locked key variables completed full grid
+[X] 7.  No blank or all-zero sheets in final workbook (all 17 sheets checked)
+[X] 8.  B-proportion ~100% at 1% missingness (min=100% across all methods/vars)
+[X] 9.  LD at 50% shows substantially reduced N (Mean_N_obs~16,320 vs baseline 32,647)
+[X] 10. Paper Information Record complete
+[X] 11. Files archived per directory convention
 ================================================================================

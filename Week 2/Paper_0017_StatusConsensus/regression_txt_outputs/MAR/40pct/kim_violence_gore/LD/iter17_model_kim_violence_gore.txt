@@ -3,8 +3,8 @@
 Dep. Variable:              sd_pooled   R-squared:                       0.571
 Model:                            OLS   Adj. R-squared:                  0.559
 Method:                 Least Squares   F-statistic:                     48.65
-Date:                Sun, 29 Mar 2026   Prob (F-statistic):               0.00
-Time:                        15:43:45   Log-Likelihood:                 289.40
+Date:                Tue, 31 Mar 2026   Prob (F-statistic):               0.00
+Time:                        19:58:02   Log-Likelihood:                 289.40
 No. Observations:                2408   AIC:                            -448.8
 Df Residuals:                    2343   BIC:                            -72.67
 Df Model:                          64                                         

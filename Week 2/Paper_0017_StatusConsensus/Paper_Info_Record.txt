@@ -70,26 +70,40 @@ RUN LOG
 ================================================================================
 Smoke start:       2026-03-29 09:52:16
 Smoke end:         2026-03-29 09:53:17  (84 runs, 0 errors)
-Full run start:    2026-03-29 ~09:53
-Full run end:      [TO BE FILLED ON COMPLETION]
+Full run start:    2026-03-31 11:00:51 (third run; first two archived -- see below)
+Full run end:      2026-04-01 00:56:51  (17,640 runs, 0 errors)
 Errors:            None
+Run history:
+  Run 1 (2026-03-29 ~16:51): QC FAILED -- N_iters=28 for 42 combos (smoke/full
+         progress-log contamination). Archived as
+         ARCHIVE_Stroube2024Report_0017_partial_20260329.xlsx
+  Run 2 (2026-03-30 11:27): QC FAILED -- MILGBM method errored 2,520 times
+         (lightgbm not installed in TF shim environment). Archived as
+         ARCHIVE_Stroube2024Report_0017_nolgbm_20260331.xlsx
+  Run 3 (2026-03-31 11:00): FINAL. All issues resolved. QC PASSED.
 Notes:             Column rename map applied at load time: dots to underscores
                    (genres.count -> genres_count, genre.Sci.Fi -> genre_Sci_Fi, etc.).
                    FLead and major cast from bool to int before regression.
-                   TensorFlow install failed (Windows long-path limit); DL
-                   method silently falls back to mean imputation via try/except.
+                   DL method uses TensorFlow 2.20.0 (MLP: 32->Dropout(0.1)->16->1
+                   units, ReLU activation, Adam lr=0.005, EarlyStopping on val_loss,
+                   +noise from residual SD). Confirmed genuine (TF log entries present,
+                   no fallback errors).
+                   MILGBM method uses LightGBM 4.6.0 MICE (M=5, Rubin's Rules pooling,
+                   30 estimators, max_depth=4, lr=0.05, 10 leaves).
+                   Both DL and MILGBM confirmed genuine in final run (0 errors).
 ================================================================================
 QC CHECKLIST
 ================================================================================
-[ ] 1.  Baseline matches published table
-[ ] 2.  All 3 mechanisms ran (MCAR, MAR, NMAR)
-[ ] 3.  All 7 proportions ran (1%, 5%, 10%, 20%, 30%, 40%, 50%)
-[ ] 4.  All 7 methods produced output (LD, Mean, Reg, Iter, RF, DL, MILGBM)
-[ ] 5.  30 iterations completed per combination
-[ ] 6.  All 4 locked key variables completed full grid
-[ ] 7.  No blank or all-zero sheets in final workbook
-[ ] 8.  B-proportion ~100% at 1% missingness
-[ ] 9.  LD at 50% shows substantially reduced N
-[ ] 10. Paper Information Record complete
-[ ] 11. Files archived per directory convention
+[X] 1.  Baseline matches published table (FLead=0.0468 vs published 0.047**)
+[X] 2.  All 3 mechanisms ran (MCAR, MAR, NMAR)
+[X] 3.  All 7 proportions ran (1%, 5%, 10%, 20%, 30%, 40%, 50%)
+[X] 4.  All 7 methods produced output (LD, Mean, Reg, Iter, RF, DL, MILGBM)
+        DL: genuine TF 2.20.0 MLP; MILGBM: genuine LightGBM 4.6.0 MICE
+[X] 5.  30 iterations completed per combination (all 588 combos verified, 2026-04-01)
+[X] 6.  All 4 locked key variables completed full grid
+[X] 7.  No blank or all-zero sheets in final workbook (all 17 sheets checked)
+[X] 8.  B-proportion ~100% at 1% missingness (min=100% across all methods/vars)
+[X] 9.  LD at 50% shows substantially reduced N (Mean_N_obs=2006 vs baseline 4012)
+[X] 10. Paper Information Record complete
+[X] 11. Files archived per directory convention
 ================================================================================

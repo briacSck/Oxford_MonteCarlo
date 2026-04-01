@@ -148,13 +148,32 @@ None.
 --------------------------------------------------------------------------------
 QC SIGNOFF
 --------------------------------------------------------------------------------
-[ ] 1. Baseline matches published table
-[ ] 2. All 3 mechanisms ran (MCAR, MAR, NMAR)
-[ ] 3. All 7 proportions ran (1%, 5%, 10%, 20%, 30%, 40%, 50%)
-[ ] 4. All 7 methods produced output
-[ ] 5. 30 iterations per combination
-[ ] 6. No blank/all-zero sheets in workbook
-[ ] 7. B-proportion ~100% at 1% missingness
-[ ] 8. LD at 50% shows reduced N
-[ ] 9. PaperInfoRecord complete
-[ ] 10. Files archived per directory convention
+[X] 1. Baseline matches published table (FLead=0.0468, published 0.047**)
+[X] 2. All 3 mechanisms ran (MCAR, MAR, NMAR)
+[X] 3. All 7 proportions ran (1%, 5%, 10%, 20%, 30%, 40%, 50%)
+[X] 4. All 7 methods produced output (genuine DL + MILGBM confirmed, 0 errors)
+[X] 5. 30 iterations per combination (all 588 combos verified)
+[X] 6. No blank/all-zero sheets in workbook (all 17 sheets checked)
+[X] 7. B-proportion ~100% at 1% missingness (min=100%)
+[X] 8. LD at 50% shows reduced N (Mean_N_obs=2006 vs 4012 baseline)
+[X] 9. PaperInfoRecord complete
+[X] 10. Files archived per directory convention
+
+--------------------------------------------------------------------------------
+FULL RUN COMPLETION NOTE (2026-04-01)
+--------------------------------------------------------------------------------
+Final workbook: Stroube2024Report_0017.xlsx (written 2026-04-01 00:56:51)
+Run: 2026-03-31 11:00:51 -- 2026-04-01 00:56:51, 17,640 runs, 0 errors
+
+DL method: TensorFlow 2.20.0, MLP architecture 32->Dropout(0.1)->16->1 units,
+  ReLU activation, Adam optimizer lr=0.005, EarlyStopping on val_loss (patience=5),
+  residual noise added. Confirmed genuine (TF initialized at run start, no errors).
+
+MILGBM method: LightGBM 4.6.0, MICE framework, M=5 imputed datasets, Rubin's
+  Rules pooling, 30 estimators, max_depth=4, learning_rate=0.05, num_leaves=10.
+  Confirmed genuine (0 lightgbm errors).
+
+Earlier runs archived:
+  ARCHIVE_Stroube2024Report_0017_partial_20260329.xlsx  -- smoke-log contamination
+  ARCHIVE_Stroube2024Report_0017_dlmean_20260330.xlsx   -- DL=mean fallback (no TF)
+  ARCHIVE_Stroube2024Report_0017_nolgbm_20260331.xlsx   -- MILGBM errors (no lgbm)
