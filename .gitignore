@@ -22,7 +22,6 @@ env/
 Thumbs.db
 
 # Monte Carlo generated outputs
-**/regression_txt_outputs/
 **/simulation*.log
 **/*progress.log
 
